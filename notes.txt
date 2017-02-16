@@ -1,0 +1,4 @@
+Sales Table
+	if buy 15 of product #2, then
+	put productID, qty, timeOfSale
+
