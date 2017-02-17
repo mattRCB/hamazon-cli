@@ -1,0 +1,25 @@
+{
+  "name": "hamazon-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "hamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattRCB/hamazon-cli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattRCB/hamazon-cli/issues"
+  },
+  "homepage": "https://github.com/mattRCB/hamazon-cli#readme",
+  "dependencies": {
+    "cli-table": "^0.3.1",
+    "express": "^4.14.1",
+    "inquirer": "^3.0.1",
+    "mysql": "^2.13.0"
+  }
+}
