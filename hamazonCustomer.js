@@ -1,22 +1,7 @@
-// var express = require('express');
-var mysql = require('mysql');
+var connection = require('./connection.js');
+
 var inquirer = require('inquirer');
 var Table = require('cli-table');
-
-var connection = mysql.createConnection({
-	host: "localhost",
-	user: "root",
-	password: "root",
-	port: 8082,
-	database: "hamazon_db"
-});
-connection.connect(function(err) {
-	if (err) {
-		console.error("error connecting: " + err.stack);
-		return;
-	}
-	console.log("Connected to hamazon_db on thread " + connection.threadId + ".");
-});
 
 process.stdout.write('\033c'); //clear terminal window
 displayProdTable();
@@ -119,29 +104,5 @@ function placeOrder(id, qty, qty_instock) {
 			};
 		});
 	});
-
-
 	
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};
