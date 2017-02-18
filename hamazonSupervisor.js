@@ -15,11 +15,28 @@ function selectAction() {
 		}
 	]).then(function(user_input) {
 		// console.log(user_input);
-		process.stdout.write('\033c'); //clear terminal window\
+		process.stdout.write('\033c'); //clear terminal window
 		switch (user_input.action) {
 			case "Exit":
 				process.exit();
 			case "View Product Sales by Department":
+				process.stdout.write('\033c'); //clear terminal window\
+				connection.query("SELECT department_id, Departments.department, Departments.overhead_cost, product_id, Products.price, SUM(qty_purchased * price) AS total FROM Products JOIN Sales ON Products.P_Id = Sales.product_id JOIN Departments ON Departments.P_Id = Products.department_id GROUP BY department_id", function(err, data) {
+					// console.log(data);
+
+					var table = new Table({
+						head: ['ID', 'DEPARTMENT', 'OVERHEAD', 'TOTAL SALES', 'NET PROFIT'],
+						colWidths: [6, 20, 10, 16, 16]
+					});
+					for (i=0; i<data.length; i++) {
+						var row = [];
+						row.push(data[i].department_id, data[i].department, data[i].overhead_cost, data[i].total, (data[i].total - data[i].overhead_cost).toFixed(2));
+						table.push(row);
+					}
+					console.log(table.toString());						
+					selectAction();
+				});
+
 
 				break;
 			case "Create New Department":
